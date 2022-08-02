@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { Component } from "react";
+import ActionType from "./redux/reducer/GlobalActionType";
+import { connect } from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    console.log(this.props);
+    return (
+      <div className="App">
+        <p> Test </p>
+        <h1> {this.props.numb} </h1>
+        <button onClick={this.props.handlePlus}> + </button>
+        <button onClick={this.props.handleMinus}> - </button>
+      </div>
+    );
+  }
 }
+//  cara mengirim status menggunakan mapStateToProps
+const MapStateToProps = (state) => {
+  return {
+    numb: state.globalNumber,
+  };
+};
 
-export default App;
+// cara mengirim action menggunakan mapDispatchToProps
+
+const MapDispatchToProps = (dispatch) => {
+  return {
+    handlePlus: () => dispatch({ type: ActionType.PLUS }),
+    handleMinus: () => dispatch({ type: ActionType.MINUS }),
+  };
+};
+export default connect(MapStateToProps, MapDispatchToProps)(App);
+
+// connect akan nyambungin react dan redux, dia mengikat redux dan reactnya
