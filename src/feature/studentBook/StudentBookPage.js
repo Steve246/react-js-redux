@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import BookService from "../../services/BookServices";
 
 import { addStudentBookAction } from "./state/StudentBookAction";
 
@@ -9,6 +10,9 @@ class StudentBookPages extends Component {
     this.state = {
       newBookValue: "",
     };
+    // add api disini
+
+    this.service = BookService();
   }
 
   onNewBookChange = (event) => {
@@ -24,6 +28,15 @@ class StudentBookPages extends Component {
     });
   };
 
+  onPostStudentBook = async () => {
+    try {
+      const response = await this.service.postBook(this.props.studentBook);
+      console.log(response);
+    } catch (e) {
+      alert("oops... something when wrong");
+    }
+  };
+
   render() {
     return this.props.view({
       newBookValue: this.state.newBookValue,
@@ -31,6 +44,8 @@ class StudentBookPages extends Component {
       handleNewBookChange: this.onNewBookChange,
       student: this.props.student,
       books: this.props.studentBook.books,
+
+      handlePostBook: this.onPostStudentBook,
     });
   }
 }

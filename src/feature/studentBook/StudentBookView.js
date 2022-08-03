@@ -3,8 +3,14 @@ import AppButton from "../../component/AppButton";
 import AppFormInput from "../../component/AppFormInput";
 
 const StudentBookView = (props) => {
-  const { handleSubmit, books, newBookValue, handleNewBookChange, student } =
-    props;
+  const {
+    handleSubmit,
+    books,
+    newBookValue,
+    handleNewBookChange,
+    student,
+    handlePostBook,
+  } = props;
   return (
     <>
       <div>
@@ -27,6 +33,8 @@ const StudentBookView = (props) => {
             <li key={book}> {book} </li>
           ))}
         </ul>
+
+        <AppButton label="post-book" handleClick={handlePostBook} />
       </div>
     </>
   );
