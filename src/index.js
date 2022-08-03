@@ -7,7 +7,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 // provider sebuah komponen, memiliki propsnya juga. makanya pake store karena dia dari redux store. Dia akan bungkus semua komponen
 
-import configureStore from "./app/store";
+import { configureStore } from "./app/store";
 
 const store = configureStore();
 
