@@ -7,6 +7,7 @@ export const STUDENT_CHANGE_NAME = "STUDENT_CHANGE_NAME";
 export const STUDENT_ADD_BOOK = "STUDENT_ADD_BOOK";
 
 export const LABEL = {
+  // buat student book
   "AddBook.label": {
     value: "Tambah Buku",
   },
@@ -15,5 +16,19 @@ export const LABEL = {
   },
   "Book.label": {
     value: "Buku",
+  },
+
+  // buat student
+
+  "Student.label": {
+    value: "Student",
+  },
+
+  "Student.change": {
+    value: "Change Nama Student",
+  },
+
+  "Age.click": {
+    value: "Add Umur Student",
   },
 };
