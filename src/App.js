@@ -3,6 +3,8 @@ import "./App.css";
 import { Component } from "react";
 
 import StudentView from "./feature/student/StudentView";
+import StudentBookPage from "./feature/studentBook/StudentBookPage";
+import StudentBookView from "./feature/studentBook/StudentBookView";
 
 class App extends Component {
   render() {
@@ -10,6 +12,7 @@ class App extends Component {
     return (
       <div>
         <StudentView />
+        <StudentBookPage view={StudentBookView} />
       </div>
     );
   }
