@@ -23,6 +23,10 @@ class StudentView extends Component {
     this.props.changeNameAction(this.state.nameValue);
   };
 
+  handleAddAgeClick = () => {
+    this.props.addAgeAction();
+  };
+
   render() {
     const { student } = this.props;
     console.log(student);
@@ -37,7 +41,15 @@ class StudentView extends Component {
           />
         </label>
 
+        <div>
+          {student.name} {student.age}{" "}
+        </div>
+
         <button onClick={this.handdleSubmit}> Change Name </button>
+
+        <div>
+          <button onClick={this.handleAddAgeClick}> Add Age </button>
+        </div>
       </div>
     );
   }
