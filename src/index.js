@@ -8,8 +8,17 @@ import { Provider } from "react-redux";
 // provider sebuah komponen, memiliki propsnya juga. makanya pake store karena dia dari redux store. Dia akan bungkus semua komponen
 
 import { configureStore } from "./app/store";
+import BookService from "./services/BookServices";
+import { register } from "./deps";
 
 const store = configureStore();
+
+// IIFE
+
+((_) => {
+  register("Book Service", BookService());
+  register("Book Service 2", BookService());
+})();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 

@@ -4,6 +4,8 @@ import BookService from "../../services/BookServices";
 
 import { addStudentBookAction } from "./state/StudentBookAction";
 
+import { withDep } from "../../shared/WithDep";
+
 class StudentBookPages extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +15,7 @@ class StudentBookPages extends Component {
     };
     // add api disini
 
-    this.service = BookService();
+    this.service = props.BookService;
   }
 
   onNewBookChange = (event) => {
@@ -37,6 +39,7 @@ class StudentBookPages extends Component {
       const response = await this.service.postBook(this.props.studentBook);
       console.log(response);
     } catch (e) {
+      console.log(e);
       alert("oops... something when wrong");
     } finally {
       this.setState({
@@ -70,4 +73,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(StudentBookPages);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(withDep(StudentBookPages, ["BookService"]));
