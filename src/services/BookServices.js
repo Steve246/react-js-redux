@@ -6,6 +6,7 @@ const BookService = () => {
       setTimeout(() => {
         console.log("Post New Book", newBook);
         resolve("success");
+        // reject('error)
       }, 1000);
     });
   };

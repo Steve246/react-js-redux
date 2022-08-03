@@ -9,6 +9,7 @@ class StudentBookPages extends Component {
     super(props);
     this.state = {
       newBookValue: "",
+      isLoading: false,
     };
     // add api disini
 
@@ -29,11 +30,18 @@ class StudentBookPages extends Component {
   };
 
   onPostStudentBook = async () => {
+    this.setState({
+      isLoading: true,
+    });
     try {
       const response = await this.service.postBook(this.props.studentBook);
       console.log(response);
     } catch (e) {
       alert("oops... something when wrong");
+    } finally {
+      this.setState({
+        isLoading: false,
+      });
     }
   };
 
@@ -46,6 +54,7 @@ class StudentBookPages extends Component {
       books: this.props.studentBook.books,
 
       handlePostBook: this.onPostStudentBook,
+      isLoading: this.state.isLoading,
     });
   }
 }
